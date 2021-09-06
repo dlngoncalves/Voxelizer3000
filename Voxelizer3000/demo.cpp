@@ -1,12 +1,13 @@
 #include <iostream>
 #include "objLoader.h"
 #include <math.h>
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 #include <vector>
 #include "vertex.h"
 #include <float.h>
 #include <thread>
 #include <mutex>
+#include <string>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ GLfloat fAspect2;
 GLfloat ang_cam = 60;
 
 //define o tamanho máximo de voxels e o tamanho de cada um
-int MODEL_INDEX = 64;
+int MODEL_INDEX = 32;
 float MODEL_SIZE = (float)MODEL_INDEX;
 float VOXEL_SIZE = 1/MODEL_SIZE;
 
@@ -319,8 +320,10 @@ void voxelizerThreadFunction(objLoader *modelo, int startX, int endX, int startY
 
 int main(int argc, char* argv[])
 {
+    
     objLoader * modelo;
-    modelo = new objLoader("cow.obj");
+    std::cout << argv[1];
+    modelo = new objLoader(argv[1]);//assuming only one file and everything is alright
     
     vertex centroVoxel;
     bool acertou = false;

@@ -2,3 +2,6 @@
 *.filters
 Debug/
 Release/
+*.obj
+build
+Voxelizer3000.xcodeproj
